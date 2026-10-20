@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VanadzorDom.am — Недвижимость Ванадзора</title>
+  <meta name="description" content="Продажа и аренда квартир, домов, коммерческой недвижимости в Ванадзоре. Крупнейшая база объявлений Лорийской области." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --blue: #174a8b;
+      --blue-dark: #0f2d5e;
+      --blue-light: #eef3fb;
+      --orange: #e8450a;
+      --orange-dark: #c43a08;
+      --tg: #29b6f6;
+      --tg-dark: #0288d1;
+      --text: #1a1a2e;
+      --muted: #6b8ab0;
+      --border: #e0e8f4;
+      --bg: #f5f7fa;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ── TOPBAR ── */
+    .topbar {
+      background: var(--blue);
+      color: #fff;
+      padding: 9px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .topbar-contact { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+    .topbar-contact a {
+      color: #c8dff8;
+      display: flex; align-items: center; gap: 5px;
+      font-size: 13px;
+      transition: color .2s;
+    }
+    .topbar-contact a:hover { color: #fff; }
+    .topbar-tg {
+      background: var(--tg);
+      color: #fff;
+      padding: 5px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex; align-items: center; gap: 5px;
+      transition: background .2s;
+    }
+    .topbar-tg:hover { background: var(--tg-dark); }
+
+    /* ── NAV ── */
+    .nav {
+      background: #fff;
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--border);
+      flex-wrap: wrap;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo { font-size: 26px; font-weight: 800; color: var(--blue); letter-spacing: .3px; }
+    .logo span { color: var(--orange); }
+    .logo-sub { font-size: 11px; color: var(--muted); font-weight: 400; margin-top: 1px; }
+    .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+    .nav-links a {
+      padding: 10px 16px;
+      font-size: 14px;
+      color: #333;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: background .2s, color .2s;
+    }
+    .nav-links a:hover { background: var(--blue-light); color: var(--blue); }
+    .nav-add {
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      padding: 11px 22px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: 700;
+      display: flex; align-items: center; gap: 6px;
+      transition: background .2s;
+      text-decoration: none;
+    }
+    .nav-add:hover { background: var(--orange-dark); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--blue);
+      padding: 44px 32px 0;
+    }
+    .hero-title {
+      font-size: 36px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .hero-title span { color: #ffb74d; }
+    .hero-sub { font-size: 15px; color: #9fc0e8; margin-bottom: 28px; }
+
+    /* ── SEARCH ── */
+    .search-wrap {
+      background: #fff;
+      border-radius: 14px 14px 0 0;
+      padding: 24px 24px 0;
+    }
+    .stabs { display: flex; gap: 3px; }
+    .stab {
+      padding: 12px 28px;
+      border: none;
+      background: #e8eef8;
+      color: #555;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 9px 9px 0 0;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      transition: background .2s, color .2s;
+    }
+    .stab.on, .stab:hover { background: var(--blue); color: #fff; }
+    .sform {
+      padding: 20px 0 24px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr 1fr auto;
+      gap: 12px;
+      align-items: end;
+    }
+    .sg label {
+      display: block;
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+    .sg select, .sg input {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1.5px solid #d0ddf0;
+      border-radius: 9px;
+      font-size: 14px;
+      color: var(--text);
+      background: #fff;
+      font-family: 'Inter', sans-serif;
+      transition: border-color .2s;
+    }
+    .sg select:focus, .sg input:focus {
+      outline: none;
+      border-color: var(--blue);
+    }
+    .sbtn {
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      padding: 13px 28px;
+      border-radius: 9px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      display: flex; align-items: center; gap: 7px;
+      font-family: 'Inter', sans-serif;
+      transition: background .2s;
+    }
+    .sbtn:hover { background: var(--orange-dark); }
+
+    /* ── STATS ── */
+    .statbar {
+      background: #eef3fb;
+      padding: 16px 32px;
+      display: flex;
+    }
+    .stat { flex: 1; text-align: center; border-right: 1px solid #d0ddf0; }
+    .stat:last-child { border-right: none; }
+    .stat strong { font-size: 22px; font-weight: 800; color: var(--blue); display: block; }
+    .stat span { font-size: 12px; color: var(--muted); }
+
+    /* ── SECTIONS ── */
+    .sec { padding: 40px 32px; }
+    .sec-bg { background: var(--bg); }
+    .sec-hd {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .sec-title { font-size: 22px; font-weight: 800; color: var(--blue); }
+    .sec-title i { font-size: 20px; vertical-align: -2px; margin-right: 6px; }
+    .sec-all {
+      background: none;
+      border: 2px solid var(--blue);
+      color: var(--blue);
+      padding: 9px 20px;
+      border-radius: 8px;
+      font-size: 13px;
+      cursor: pointer;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      transition: background .2s, color .2s;
+    }
+    .sec-all:hover { background: var(--blue); color: #fff; }
+
+    /* ── CARDS ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+    .card {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color .2s, transform .15s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .card:hover { border-color: var(--blue); transform: translateY(-2px); }
+    .cimg {
+      height: 160px;
+      background: #ddeaf8;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .cimg i { font-size: 56px; color: #5890d0; }
+    .cbadge {
+      position: absolute; top: 10px; left: 10px;
+      padding: 4px 10px; border-radius: 6px;
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .5px;
+    }
+    .cbadge.sale { background: var(--blue); color: #fff; }
+    .cbadge.rent { background: #1a8c5c; color: #fff; }
+    .cbadge.daily { background: var(--orange); color: #fff; }
+    .cbody { padding: 16px; }
+    .ctype { font-size: 11px; color: var(--orange); font-weight: 700; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 5px; }
+    .caddr { font-size: 15px; color: var(--text); font-weight: 700; margin-bottom: 4px; }
+    .cdesc { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+    .cmeta { display: flex; gap: 12px; font-size: 12px; color: #8a9ab0; }
+    .cmeta span { display: flex; align-items: center; gap: 4px; }
+    .cprice { font-size: 19px; font-weight: 800; color: var(--blue); margin-top: 10px; }
+    .cprice small { font-size: 12px; color: #8a9ab0; font-weight: 400; }
+
+    /* ── CATEGORIES ── */
+    .cats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
+    }
+    .cat {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color .2s, background .2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .cat:hover { border-color: var(--blue); background: #f0f5ff; }
+    .cat i { font-size: 38px; color: var(--blue); display: block; margin-bottom: 10px; }
+    .cat-name { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .cat-count { font-size: 13px; color: var(--muted); }
+
+    /* ── DISTRICTS ── */
+    .districts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+    }
+    .dist {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      cursor: pointer;
+      display: flex; align-items: center; gap: 12px;
+      transition: border-color .2s, background .2s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .dist:hover { border-color: var(--blue); background: #f0f5ff; }
+    .dist i { font-size: 24px; color: var(--blue); flex-shrink: 0; }
+    .dist-name { font-size: 14px; font-weight: 700; color: var(--text); }
+    .dist-count { font-size: 12px; color: var(--muted); }
+
+    /* ── WHY US ── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+    }
+    .why-card {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 22px;
+      text-align: center;
+    }
+    .why-card i { font-size: 38px; color: var(--blue); display: block; margin-bottom: 14px; }
+    .why-title { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .why-text { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+    /* ── CTA BANNER ── */
+    .cta {
+      background: var(--blue);
+      padding: 44px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; flex-wrap: wrap;
+    }
+    .cta-left h2 { font-size: 24px; color: #fff; font-weight: 800; margin-bottom: 6px; }
+    .cta-left p { font-size: 14px; color: #9fc0e8; }
+    .cta-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .cta-btn {
+      background: var(--orange);
+      color: #fff; border: none;
+      padding: 14px 28px; border-radius: 9px;
+      font-size: 15px; font-weight: 700; cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      display: flex; align-items: center; gap: 7px;
+      transition: background .2s;
+      text-decoration: none;
+    }
+    .cta-btn:hover { background: var(--orange-dark); }
+    .cta-btn.tg { background: var(--tg); }
+    .cta-btn.tg:hover { background: var(--tg-dark); }
+
+    /* ── CONTACT BAR ── */
+    .contact-bar {
+      background: #fff;
+      border-top: 2px solid var(--blue-light);
+      padding: 24px 32px;
+      display: flex; gap: 32px; align-items: center; flex-wrap: wrap;
+    }
+    .contact-item { display: flex; align-items: center; gap: 12px; }
+    .contact-item i { font-size: 24px; color: var(--blue); }
+    .contact-label { font-size: 11px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: .4px; }
+    .contact-val { font-size: 16px; font-weight: 700; color: var(--text); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--blue-dark);
+      padding: 44px 32px 20px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 36px;
+      margin-bottom: 32px;
+    }
+    .flogo { font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 10px; }
+    .flogo span { color: #ffb74d; }
+    .fabout { font-size: 13px; color: #6a90c0; line-height: 1.7; }
+    .fcol h4 { font-size: 11px; color: #fff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; font-weight: 700; }
+    .fcol a { display: block; font-size: 14px; color: #6a90c0; margin-bottom: 10px; transition: color .2s; }
+    .fcol a:hover { color: #c8dff8; }
+    .fbot {
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding-top: 18px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .fbot p { font-size: 12px; color: #3a5a90; }
+    .ftg {
+      background: var(--tg);
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 7px;
+      font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; gap: 6px;
+      transition: background .2s;
+    }
+    .ftg:hover { background: var(--tg-dark); }
+
+    /* ── FLOATING TG BUTTON ── */
+    .float-tg {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      background: var(--tg);
+      color: #fff;
+      border-radius: 50px;
+      padding: 14px 22px;
+      font-size: 15px; font-weight: 700;
+      display: flex; align-items: center; gap: 8px;
+      box-shadow: 0 4px 20px rgba(41,182,246,.4);
+      z-index: 999;
+      transition: background .2s, transform .15s;
+      text-decoration: none;
+    }
+    .float-tg:hover { background: var(--tg-dark); transform: scale(1.04); }
+    .float-tg i { font-size: 22px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .sform { grid-template-columns: 1fr 1fr; }
+      .sbtn { grid-column: 1 / -1; justify-content: center; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hero-title { font-size: 26px; }
+      .statbar { flex-wrap: wrap; }
+      .stat { min-width: 50%; border-right: none; border-bottom: 1px solid #d0ddf0; padding: 10px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-contact">
+      <a href="tel:+37498022634">
+        <i class="ti ti-phone"></i> +374 98 02 26 34
+      </a>
+      <a href="#">
+        <i class="ti ti-clock"></i> Пн–Вс 09:00–20:00
+      </a>
+      <a href="#">
+        <i class="ti ti-map-pin"></i> Ванадзор, Армения
+      </a>
+    </div>
+    <a href="https://t.me/VanadzorDom" target="_blank" class="topbar-tg">
+      <i class="ti ti-brand-telegram"></i> @VanadzorDom
+    </a>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div>
+      <div class="logo">VanadzorDom<span>.am</span></div>
+      <div class="logo-sub">Недвижимость Ванадзора</div>
+    </div>
+    <div class="nav-links">
+      <a href="#">Купить</a>
+      <a href="#">Аренда</a>
+      <a href="#">Посуточно</a>
+      <a href="#">Новостройки</a>
+      <a href="#">Контакты</a>
+    </div>
+    <a href="#add" class="nav-add">
+      <i class="ti ti-plus"></i> Добавить объявление
+    </a>
+  </nav>
+
+  <!-- HERO + SEARCH -->
+  <div class="hero">
+    <div class="hero-title">Недвижимость <span>Ванадзора</span> —<br>найди свой дом</div>
+    <div class="hero-sub">Продажа и аренда квартир, домов, коммерческих помещений во всех районах города</div>
+    <div class="search-wrap">
+      <div class="stabs">
+        <button class="stab on">Купить</button>
+        <button class="stab">Аренда</button>
+        <button class="stab">Посуточно</button>
+      </div>
+      <div class="sform">
+        <div class="sg">
+          <label>Тип недвижимости</label>
+          <select>
+            <option>Квартира</option>
+            <option>Дом / Особняк</option>
+            <option>Новостройка</option>
+            <option>Коммерческая</option>
+            <option>Земельный участок</option>
+          </select>
+        </div>
+        <div class="sg">
+          <label>Район Ванадзора</label>
+          <select>
+            <option>Весь город</option>
+            <option>Центр</option>
+            <option>Арменаван</option>
+            <option>Норк</option>
+            <option>Гугарк</option>
+            <option>Ванадзор-2</option>
+            <option>Маяковский</option>
+          </select>
+        </div>
+        <div class="sg">
+          <label>Комнаты</label>
+          <select>
+            <option>Любое</option>
+            <option>1 комната</option>
+            <option>2 комнаты</option>
+            <option>3 комнаты</option>
+            <option>4 и более</option>
+          </select>
+        </div>
+        <div class="sg">
+          <label>Цена до ($)</label>
+          <select>
+            <option>Любая</option>
+            <option>20 000</option>
+            <option>40 000</option>
+            <option>60 000</option>
+            <option>80 000</option>
+            <option>100 000</option>
+            <option>150 000+</option>
+          </select>
+        </div>
+        <button class="sbtn">
+          <i class="ti ti-search"></i> Найти
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="statbar">
+    <div class="stat"><strong>1 400+</strong><span>Всего объявлений</span></div>
+    <div class="stat"><strong>420+</strong><span>Квартиры</span></div>
+    <div class="stat"><strong>230+</strong><span>Дома</span></div>
+    <div class="stat"><strong>140+</strong><span>Коммерческая</span></div>
+    <div class="stat"><strong>610+</strong><span>Аренда</span></div>
+  </div>
+
+  <!-- HOT OFFERS -->
+  <section class="sec">
+    <div class="sec-hd">
+      <div class="sec-title"><i class="ti ti-flame"></i>Горячие предложения</div>
+      <button class="sec-all">Все объявления →</button>
+    </div>
+    <div class="grid">
+      <a href="#" class="card">
+        <div class="cimg"><i class="ti ti-building"></i><span class="cbadge sale">Продажа</span></div>
+        <div class="cbody">
+          <div class="ctype">Квартира</div>
+          <div class="caddr">ул. Тиграна Меца, 12</div>
+          <div class="cdesc">Центр · 3/9 этаж · хороший ремонт</div>
+          <div class="cmeta"><span><i class="ti ti-ruler"></i> 78 м²</span><span><i class="ti ti-door"></i> 3 ком</span></div>
+          <div class="cprice">$62 000</div>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <div class="cimg"><i class="ti ti-home"></i><span class="cbadge sale">Продажа</span></div>
+        <div class="cbody">
+          <div class="ctype">Дом / Особняк</div>
+          <div class="caddr">ул. Маштоца, 7</div>
+          <div class="cdesc">Арменаван · 2 этажа · гараж · сад</div>
+          <div class="cmeta"><span><i class="ti ti-ruler"></i> 160 м²</span><span><i class="ti ti-door"></i> 5 ком</span></div>
+          <div class="cprice">$95 000</div>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <div class="cimg"><i class="ti ti-building-skyscraper"></i><span class="cbadge rent">Аренда</span></div>
+        <div class="cbody">
+          <div class="ctype">Квартира</div>
+          <div class="caddr">пр. Гарегина Нжде, 3</div>
+          <div class="cdesc">Центр · новострой · 5/10 · мебель</div>
+          <div class="cmeta"><span><i class="ti ti-ruler"></i> 55 м²</span><span><i class="ti ti-door"></i> 2 ком</span></div>
+          <div class="cprice">$320 <small>/ месяц</small></div>
+        </div>
+      </a>
+      <a href="#" class="card">
+        <div class="cimg"><i class="ti ti-bed"></i><span class="cbadge daily">Посуточно</span></div>
+        <div class="cbody">
+          <div class="ctype">Посуточно</div>
+          <div class="caddr">пр. Гарегина Нжде, 8</div>
+          <div class="cdesc">Центр · Wi-Fi · всё включено</div>
+          <div class="cmeta"><span><i class="ti ti-ruler"></i> 45 м²</span><span><i class="ti ti-door"></i> 2 ком</span></div>
+          <div class="cprice">$35 <small>/ сутки</small></div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="sec sec-bg">
+    <div class="sec-hd"><div class="sec-title">Категории</div></div>
+    <div class="cats">
+      <a href="#" class="cat"><i class="ti ti-building"></i><div class="cat-name">Квартиры</div><div class="cat-count">420 объявлений</div></a>
+      <a href="#" class="cat"><i class="ti ti-home"></i><div class="cat-name">Дома</div><div class="cat-count">230 объявлений</div></a>
+      <a href="#" class="cat"><i class="ti ti-crane"></i><div class="cat-name">Новостройки</div><div class="cat-count">98 объявлений</div></a>
+      <a href="#" class="cat"><i class="ti ti-building-store"></i><div class="cat-name">Коммерческая</div><div class="cat-count">140 объявлений</div></a>
+      <a href="#" class="cat"><i class="ti ti-trees"></i><div class="cat-name">Земля</div><div class="cat-count">155 объявлений</div></a>
+      <a href="#" class="cat"><i class="ti ti-bed"></i><div class="cat-name">Посуточно</div><div class="cat-count">357 объявлений</div></a>
+    </div>
+  </section>
+
+  <!-- DISTRICTS -->
+  <section class="sec">
+    <div class="sec-hd"><div class="sec-title"><i class="ti ti-map-pin"></i>Районы Ванадзора</div></div>
+    <div class="districts">
+      <a href="#" class="dist"><i class="ti ti-building-community"></i><div><div class="dist-name">Центр</div><div class="dist-count">380 объявл.</div></div></a>
+      <a href="#" class="dist"><i class="ti ti-home"></i><div><div class="dist-name">Арменаван</div><div class="dist-count">210 объявл.</div></div></a>
+      <a href="#" class="dist"><i class="ti ti-home"></i><div><div class="dist-name">Норк</div><div class="dist-count">145 объявл.</div></div></a>
+      <a href="#" class="dist"><i class="ti ti-home"></i><div><div class="dist-name">Гугарк</div><div class="dist-count">180 объявл.</div></div></a>
+      <a href="#" class="dist"><i class="ti ti-home"></i><div><div class="dist-name">Ванадзор-2</div><div class="dist-count">230 объявл.</div></div></a>
+      <a href="#" class="dist"><i class="ti ti-home"></i><div><div class="dist-name">Маяковский</div><div class="dist-count">255 объявл.</div></div></a>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="sec sec-bg">
+    <div class="sec-hd"><div class="sec-title">Почему выбирают нас</div></div>
+    <div class="why-grid">
+      <div class="why-card"><i class="ti ti-map-search"></i><div class="why-title">Только Ванадзор</div><div class="why-text">Специализируемся исключительно на недвижимости Ванадзора — знаем каждый район и каждую улицу</div></div>
+      <div class="why-card"><i class="ti ti-shield-check"></i><div class="why-title">Проверенные объявления</div><div class="why-text">Каждое объявление проходит проверку. Только реальные объекты с актуальными ценами</div></div>
+      <div class="why-card"><i class="ti ti-brand-telegram"></i><div class="why-title">Telegram канал</div><div class="why-text">Подписывайтесь на @VanadzorDom — первыми узнавайте о новых объявлениях</div></div>
+      <div class="why-card"><i class="ti ti-phone-call"></i><div class="why-title">Быстрый ответ</div><div class="why-text">Звоните или пишите в Telegram — ответим в течение 15 минут в рабочее время</div></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta">
+    <div class="cta-left">
+      <h2>Есть недвижимость для продажи или аренды?</h2>
+      <p>Разместите объявление бесплатно — тысячи покупателей уже ищут в Ванадзоре</p>
+    </div>
+    <div class="cta-btns">
+      <a href="#add" class="cta-btn"><i class="ti ti-plus"></i> Добавить объявление</a>
+      <a href="https://t.me/VanadzorDom" target="_blank" class="cta-btn tg"><i class="ti ti-brand-telegram"></i> Написать в Telegram</a>
+    </div>
+  </div>
+
+  <!-- CONTACT BAR -->
+  <div class="contact-bar">
+    <div class="contact-item"><i class="ti ti-phone"></i><div><div class="contact-label">Телефон</div><div class="contact-val">+374 98 02 26 34</div></div></div>
+    <div class="contact-item"><i class="ti ti-brand-telegram"></i><div><div class="contact-label">Telegram</div><div class="contact-val">@VanadzorDom</div></div></div>
+    <div class="contact-item"><i class="ti ti-clock"></i><div><div class="contact-label">Режим работы</div><div class="contact-val">Пн–Вс · 09:00–20:00</div></div></div>
+    <div class="contact-item"><i class="ti ti-map-pin"></i><div><div class="contact-label">Город</div><div class="contact-val">Ванадзор, Армения</div></div></div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="flogo">VanadzorDom<span>.am</span></div>
+        <p class="fabout">Крупнейшая база недвижимости Ванадзора. Продажа и аренда квартир, домов, коммерческих помещений во всех районах города. Работаем только по Ванадзору.</p>
+      </div>
+      <div class="fcol">
+        <h4>Недвижимость</h4>
+        <a href="#">Купить квартиру</a>
+        <a href="#">Купить дом</a>
+        <a href="#">Аренда квартир</a>
+        <a href="#">Посуточно</a>
+        <a href="#">Новостройки</a>
+        <a href="#">Коммерческая</a>
+      </div>
+      <div class="fcol">
+        <h4>Компания</h4>
+        <a href="#">О нас</a>
+        <a href="#">Добавить объявление</a>
+        <a href="#">Наши агенты</a>
+        <a href="#">Контакты</a>
+        <a href="https://t.me/VanadzorDom" target="_blank">Telegram канал</a>
+      </div>
+    </div>
+    <div class="fbot">
+      <p>© 2026 VanadzorDom.am · Ванадзор, Армения · +374 98 02 26 34</p>
+      <a href="https://t.me/VanadzorDom" target="_blank" class="ftg"><i class="ti ti-brand-telegram"></i> @VanadzorDom</a>
+    </div>
+  </footer>
+
+  <!-- FLOATING TELEGRAM BUTTON -->
+  <a href="https://t.me/VanadzorDom" target="_blank" class="float-tg">
+    <i class="ti ti-brand-telegram"></i> Написать в Telegram
+  </a>
+
+  <script>
+    // Tab switching
+    document.querySelectorAll('.stab').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.stab').forEach(function(b) { b.classList.remove('on'); });
+        this.classList.add('on');
+      });
+    });
+  </script>
+
+</body>
+</html>
