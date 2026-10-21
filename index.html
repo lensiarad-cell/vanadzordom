@@ -645,50 +645,58 @@
     </div>
   </section>
 
-  <!-- LISTING POST -->
+  <!-- LISTING POST #001 -->
   <section class="sec" id="listing-1">
     <div class="sec-hd">
-      <div class="sec-title"><i class="ti ti-home-check"></i>Объявление — пример поста</div>
-      <span style="font-size:13px;color:var(--muted);">ID #001 · Добавлено 21.10.2026</span>
+      <div class="sec-title"><i class="ti ti-home-check"></i>Объявления</div>
+      <span style="font-size:13px;color:var(--muted);">ID #001 · Добавлено 22.10.2026</span>
     </div>
     <div class="listing">
       <div class="listing-head">
-        <div style="display:flex;gap:8px;margin-bottom:10px;">
-          <span class="cbadge sale" style="position:static;">Продажа</span>
-          <span class="cbadge" style="position:static;background:#1a8c5c;">Квартира</span>
-          <span class="cbadge" style="position:static;background:#7b5ea7;">Новостройка</span>
+        <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
+          <span class="cbadge daily" style="position:static;">Посуточно</span>
+          <span class="cbadge rent" style="position:static;">Долгосрочно</span>
+          <span class="cbadge" style="position:static;background:#7b5ea7;">Капремонт</span>
         </div>
-        <div class="listing-title">3-комнатная квартира, ул. Тиграна Меца, 12</div>
+        <div class="listing-title">Квартира посуточно и долгосрочно, ул. Касяна, 5</div>
         <div class="listing-meta">
-          <span><i class="ti ti-map-pin"></i> Центр, Ванадзор</span>
-          <span><i class="ti ti-ruler"></i> 78 м²</span>
-          <span><i class="ti ti-door"></i> 3 комнаты</span>
-          <span><i class="ti ti-building"></i> 3 / 9 этаж</span>
-          <span><i class="ti ti-calendar"></i> 2019 год</span>
+          <span><i class="ti ti-map-pin"></i> Район Димац, Ванадзор</span>
+          <span><i class="ti ti-door"></i> Несколько комнат</span>
+          <span><i class="ti ti-star"></i> Капитальный ремонт</span>
+          <span><i class="ti ti-calendar"></i> Добавлено 22.10.2026</span>
         </div>
-        <div class="listing-price">$62 000</div>
+        <div class="listing-price">20 000 ֏ <small style="font-size:14px;color:var(--muted);font-weight:400;">/ сутки</small></div>
       </div>
 
       <!-- GALLERY -->
       <div style="padding:0 20px 18px;" class="gallery-wrap">
-        <div class="gallery-main" id="gMain" onclick="openLightbox(0)">
-          <div style="width:100%;height:100%;background:linear-gradient(135deg,#c8ddf8,#ddeaf8);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;">
-            <i class="ti ti-photo" style="font-size:64px;color:#5890d0;"></i>
-            <div style="font-size:14px;color:#5890d0;font-weight:600;">Здесь будут фото квартиры</div>
-            <div style="font-size:12px;color:#8ab0d0;">Скинь фото — и я добавлю их сюда</div>
-          </div>
-          <span class="gallery-badge"><i class="ti ti-photo"></i> 0 фото</span>
+        <div class="gallery-main" id="gMain1" onclick="openLightbox1(currentPhoto1)">
+          <img id="gMainImg1" src="https://i.ibb.co/JF2k1Y6h/photo-2026-10-20-20-36-10.jpg" alt="Гостиная" style="width:100%;height:100%;object-fit:cover;" />
+          <span class="gallery-badge"><i class="ti ti-photo"></i> 10 фото</span>
         </div>
-        <div class="gallery-thumbs" id="gThumbs"></div>
+        <div class="gallery-thumbs">
+          <img src="https://i.ibb.co/JF2k1Y6h/photo-2026-10-20-20-36-10.jpg" class="active" onclick="setPhoto1(0,this)" alt="фото 1" />
+          <img src="https://i.ibb.co/21jQnWT9/photo-2026-10-20-20-36-12.jpg" onclick="setPhoto1(1,this)" alt="фото 2" />
+          <img src="https://i.ibb.co/twXxtfzF/photo-2026-10-20-20-36-14.jpg" onclick="setPhoto1(2,this)" alt="фото 3" />
+          <img src="https://i.ibb.co/C399td8L/photo-2026-10-20-20-36-16.jpg" onclick="setPhoto1(3,this)" alt="фото 4" />
+          <img src="https://i.ibb.co/9Hk5PtmG/photo-2026-10-20-20-36-18.jpg" onclick="setPhoto1(4,this)" alt="фото 5" />
+          <img src="https://i.ibb.co/fGqBWQx8/photo-2026-10-20-20-36-21.jpg" onclick="setPhoto1(5,this)" alt="фото 6" />
+          <img src="https://i.ibb.co/5x8VRYhd/photo-2026-10-20-20-36-24.jpg" onclick="setPhoto1(6,this)" alt="фото 7" />
+          <img src="https://i.ibb.co/q3TkHKZB/photo-2026-10-20-20-36-26.jpg" onclick="setPhoto1(7,this)" alt="фото 8" />
+          <img src="https://i.ibb.co/Xfdh5wBf/photo-2026-10-20-20-36-27-2.jpg" onclick="setPhoto1(8,this)" alt="фото 9" />
+          <img src="https://i.ibb.co/4ZmDpsDM/photo-2026-10-20-20-36-27.jpg" onclick="setPhoto1(9,this)" alt="фото 10" />
+        </div>
       </div>
 
       <div class="listing-desc">
-        Продаётся просторная 3-комнатная квартира в центре Ванадзора. Квартира находится на 3 этаже 9-этажного дома. Выполнен хороший ремонт, установлена новая сантехника. Окна выходят на тихую улицу. Рядом школа, магазины, остановка транспорта. Документы готовы, сделка чистая.
+        Сдаётся капитально отремонтированная квартира в районе Димац, ул. Касяна, 5. Современный и чистый интерьер, уютные комнаты с красивой отделкой. Просторная кухня с новой мебелью и техникой, душевая, туалет, открытая веранда с видом на город.
         <br><br>
-        <strong>Особенности:</strong> раздельные комнаты · балкон · кладовая · домофон · охраняемый двор
+        <strong>Что есть в квартире:</strong> капитальный ремонт · новая кухня · душевая кабина · веранда · уютные комнаты · вся мебель
+        <br><br>
+        📞 Для бронирования и вопросов: <strong>077 72 10 92</strong>
       </div>
       <div class="listing-contacts">
-        <a href="tel:+37498022634" class="listing-btn call"><i class="ti ti-phone"></i> Позвонить</a>
+        <a href="tel:+37477721092" class="listing-btn call"><i class="ti ti-phone"></i> Позвонить: 077 72 10 92</a>
         <a href="https://t.me/VanadzorDom" target="_blank" class="listing-btn tg"><i class="ti ti-brand-telegram"></i> Написать в Telegram</a>
       </div>
     </div>
@@ -809,26 +817,42 @@
       });
     });
 
-    // ── GALLERY ──
-    var photos = []; // сюда добавляются фото когда есть
-    var currentPhoto = 0;
+    // ── GALLERY #1 ──
+    var photos1 = [
+      'https://i.ibb.co/JF2k1Y6h/photo-2026-10-20-20-36-10.jpg',
+      'https://i.ibb.co/21jQnWT9/photo-2026-10-20-20-36-12.jpg',
+      'https://i.ibb.co/twXxtfzF/photo-2026-10-20-20-36-14.jpg',
+      'https://i.ibb.co/C399td8L/photo-2026-10-20-20-36-16.jpg',
+      'https://i.ibb.co/9Hk5PtmG/photo-2026-10-20-20-36-18.jpg',
+      'https://i.ibb.co/fGqBWQx8/photo-2026-10-20-20-36-21.jpg',
+      'https://i.ibb.co/5x8VRYhd/photo-2026-10-20-20-36-24.jpg',
+      'https://i.ibb.co/q3TkHKZB/photo-2026-10-20-20-36-26.jpg',
+      'https://i.ibb.co/Xfdh5wBf/photo-2026-10-20-20-36-27-2.jpg',
+      'https://i.ibb.co/4ZmDpsDM/photo-2026-10-20-20-36-27.jpg'
+    ];
+    var currentPhoto1 = 0;
 
-    function openLightbox(idx) {
-      if (photos.length === 0) return;
-      currentPhoto = idx;
-      document.getElementById('lbImg').src = photos[idx];
+    function setPhoto1(idx, el) {
+      currentPhoto1 = idx;
+      document.getElementById('gMainImg1').src = photos1[idx];
+      document.querySelectorAll('.gallery-thumbs img').forEach(function(t){ t.classList.remove('active'); });
+      if(el) el.classList.add('active');
+    }
+    function openLightbox1(idx) {
+      currentPhoto1 = idx;
+      document.getElementById('lbImg').src = photos1[idx];
       document.getElementById('lightbox').classList.add('open');
     }
     function closeLightbox() {
       document.getElementById('lightbox').classList.remove('open');
     }
     function lbNext() {
-      currentPhoto = (currentPhoto + 1) % photos.length;
-      document.getElementById('lbImg').src = photos[currentPhoto];
+      currentPhoto1 = (currentPhoto1 + 1) % photos1.length;
+      document.getElementById('lbImg').src = photos1[currentPhoto1];
     }
     function lbPrev() {
-      currentPhoto = (currentPhoto - 1 + photos.length) % photos.length;
-      document.getElementById('lbImg').src = photos[currentPhoto];
+      currentPhoto1 = (currentPhoto1 - 1 + photos1.length) % photos1.length;
+      document.getElementById('lbImg').src = photos1[currentPhoto1];
     }
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeLightbox();
