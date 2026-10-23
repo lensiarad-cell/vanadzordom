@@ -125,7 +125,7 @@
       height: 100%;
       object-fit: cover;
       object-position: center 50%;
-      z-index: -2;
+      z-index: 0;
       pointer-events: none;
     }
     .hero::before {
@@ -133,11 +133,12 @@
       position: absolute;
       inset: 0;
       background: linear-gradient(90deg, rgba(7, 23, 48, .78) 0%, rgba(7, 23, 48, .48) 55%, rgba(7, 23, 48, .30) 100%);
-      z-index: -1;
+      z-index: 1;
       pointer-events: none;
     }
     .hero-title, .hero-sub, .hero > .search-wrap {
       position: relative;
+      z-index: 2;
     }
     .hero-title {
       font-size: 36px;
@@ -546,7 +547,7 @@
   <!-- HERO + SEARCH -->
   <div class="hero">
     <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-      <source src="assets/vanadzor-fountains.mp4" type="video/mp4">
+      <source src="vanadzor-fountains.mp4" type="video/mp4">
     </video>
     <div class="hero-title">Недвижимость <span>Ванадзора</span> —<br>найди свой дом</div>
     <div class="hero-sub">Продажа и аренда квартир, домов, коммерческих помещений во всех районах города</div>
