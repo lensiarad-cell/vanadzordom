@@ -116,7 +116,12 @@
       isolation: isolate;
       overflow: hidden;
       background: var(--blue);
+      /* ИЗМЕНЕНО: добавлена min-height чтобы шапка была высокой */
+      min-height: 460px;
       padding: 44px 32px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
     }
     .hero-video {
       position: absolute;
@@ -124,7 +129,9 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 50%;
+      /* ИЗМЕНЕНО: 30% вместо 50% — сдвигаем кадр чуть выше,
+         чтобы видеть больше верхней части видео (небо, здания) */
+      object-position: center 30%;
       z-index: 0;
       pointer-events: none;
     }
@@ -495,16 +502,19 @@
       .hero-title { font-size: 26px; }
       .statbar { flex-wrap: wrap; }
       .stat { min-width: 50%; border-right: none; border-bottom: 1px solid #d0ddf0; padding: 10px 0; }
+      /* ИЗМЕНЕНО мобильная: уменьшаем min-height чтобы шапка не была огромной */
+      .hero { min-height: 320px; }
     }
-  
-    /* Video hero responsive adjustments */
+
+    /* ── VIDEO HERO RESPONSIVE ── */
     @media (max-width: 640px) {
+      /* На маленьких экранах центрируем кадр */
       .hero-video { object-position: center center; }
       .hero::before {
         background: linear-gradient(180deg, rgba(7, 23, 48, .68), rgba(7, 23, 48, .48));
       }
     }
-</style>
+  </style>
 </head>
 <body>
 
@@ -905,7 +915,6 @@
         maxZoom: 18
       }).addTo(map);
 
-      // Иконки
       function makeIcon(color) {
         return L.divIcon({
           className: '',
@@ -919,7 +928,6 @@
       var rentIcon  = makeIcon('#1a8c5c');
       var dailyIcon = makeIcon('#174a8b');
 
-      // Объявления на карте
       var listings = [
         { lat:40.8120, lng:44.4910, type:'sale',  title:'3-комн. квартира', addr:'ул. Тиграна Меца, 12', price:'$62 000' },
         { lat:40.8075, lng:44.4850, type:'sale',  title:'Дом / Особняк',    addr:'ул. Маштоца, 7',       price:'$95 000' },
@@ -948,3 +956,5 @@
   </script>
 
 </body>
+</html>
+
