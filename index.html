@@ -116,8 +116,8 @@
       isolation: isolate;
       overflow: hidden;
       background: var(--blue);
-      /* ИЗМЕНЕНО: добавлена min-height чтобы шапка была высокой */
-      min-height: 460px;
+      /* Увеличена высота чтобы видеть и здание и фонтан */
+      min-height: 520px;
       padding: 44px 32px 0;
       display: flex;
       flex-direction: column;
@@ -129,9 +129,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      /* ИЗМЕНЕНО: 30% вместо 50% — сдвигаем кадр чуть выше,
-         чтобы видеть больше верхней части видео (небо, здания) */
-      object-position: center 30%;
+      /* Сдвигаем кадр вниз чтобы фонтан был виден */
+      object-position: center 60%;
       z-index: 0;
       pointer-events: none;
     }
@@ -957,4 +956,3 @@
 
 </body>
 </html>
-
