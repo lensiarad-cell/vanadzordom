@@ -112,8 +112,32 @@
 
     /* ── HERO ── */
     .hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
       background: var(--blue);
       padding: 44px 32px 0;
+    }
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 50%;
+      z-index: -2;
+      pointer-events: none;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(7, 23, 48, .78) 0%, rgba(7, 23, 48, .48) 55%, rgba(7, 23, 48, .30) 100%);
+      z-index: -1;
+      pointer-events: none;
+    }
+    .hero-title, .hero-sub, .hero > .search-wrap {
+      position: relative;
     }
     .hero-title {
       font-size: 36px;
@@ -471,7 +495,15 @@
       .statbar { flex-wrap: wrap; }
       .stat { min-width: 50%; border-right: none; border-bottom: 1px solid #d0ddf0; padding: 10px 0; }
     }
-  </style>
+  
+    /* Video hero responsive adjustments */
+    @media (max-width: 640px) {
+      .hero-video { object-position: center center; }
+      .hero::before {
+        background: linear-gradient(180deg, rgba(7, 23, 48, .68), rgba(7, 23, 48, .48));
+      }
+    }
+</style>
 </head>
 <body>
 
@@ -513,6 +545,9 @@
 
   <!-- HERO + SEARCH -->
   <div class="hero">
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+      <source src="assets/vanadzor-fountains.mp4" type="video/mp4">
+    </video>
     <div class="hero-title">Недвижимость <span>Ванадзора</span> —<br>найди свой дом</div>
     <div class="hero-sub">Продажа и аренда квартир, домов, коммерческих помещений во всех районах города</div>
     <div class="search-wrap">
@@ -912,4 +947,3 @@
   </script>
 
 </body>
-</html>
